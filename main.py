@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.core.settings import settings
 
 app = FastAPI(
     title="Project Title",
@@ -25,4 +26,4 @@ async def read_root():
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("main:app", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=settings.port, reload=settings.debug)
