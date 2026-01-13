@@ -18,6 +18,11 @@ class Settings:
     postgres_port: int = 5432
     postgres_db: str = "alonovo_db"
 
+    fec_api_base_url: str = None
+    fec_api_key: str = None
+    fec_executive_name: str = None
+    fec_corporate_name: str = None
+
     def __post_init__(self):
         self.debug = os.getenv("DEBUG", "True").lower() == "true"
         self.port = int(os.getenv("PORT", "8000"))
@@ -28,6 +33,10 @@ class Settings:
             "POSTGRES_HOST",
             "POSTGRES_PORT",
             "POSTGRES_DB",
+            "FEC_API_BASE_URL",
+            "FEC_API_KEY",
+            "FEC_EXECUTIVE_NAME",
+            "FEC_CORPORATE_NAME",
         ]
 
         for var in required:
